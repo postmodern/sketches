@@ -1,0 +1,128 @@
+require 'sketches/config'
+require 'sketches/sketches'
+
+require 'mutex'
+require 'tempfile'
+
+module Sketches
+  class Sketch
+
+    # ID of the sketch
+    attr_reader :id
+
+    # Optional name of the sketch
+    attr_accessor :name
+
+    # Last modification time of the sketch
+    attr_reader :mtime
+
+    #
+    # Creates a new sketch object with the specified _id_ and the given
+    # _name_.
+    #
+    def initialize(id,name=nil)
+      @id = id
+      @name = name
+      @mtime = Time.now
+      @checksum = nil
+      @mutex = Mutex.new
+
+      TempFile.open('sketch') do |file|
+        @path = file.path
+      end
+    end
+
+    #
+    # Provides thread-safe access to the sketch.
+    #
+    def synchronize(&block)
+      @mutex.synchronize(&block)
+      return self
+    end
+
+    #
+    # Spawns the Sketches.editor with the path of the sketch.
+    #
+    def edit
+      system(Sketches.editor,@path)
+    end
+
+    #
+    # Returns +true+ if the sketch has become stale and needs reloading,
+    # returns +false+ otherwise.
+    #
+    def stale?
+      if File.file?(@path)
+        if File.mtime(@path) > @mtime
+          new_checksum = crc32
+
+          if (@checksum.nil? || new_checksum != @checksum)
+            return true
+          end
+        end
+      end
+
+      return false
+    end
+
+    #
+    # Reloads the sketch.
+    #
+    def reload!
+      if File.file?(@path)
+        @mtime = File.mtime(@path)
+        @checksum = crc32
+
+        begin
+          return load(@path)
+        rescue LoadError => e
+          STDERR.puts "#{e.class}: #{e.message}"
+        end
+      end
+
+      return false
+    end
+
+    #
+    # Returns the String representation of the sketch.
+    #
+    def to_s(verbose=false)
+      str = @id.to_s
+      str << ": #{@name}" if @name
+      str << "\n\n"
+
+      if File.file?(@path)
+        File.open(@path) do |file|
+          unless verbose
+            4.times { str << "  #{file.read_line}" }
+          else
+            file.each_line { |line| str << "  #{line}" }
+          end
+
+          str << "\n"
+        end
+      end
+
+      return str
+    end
+
+    protected
+
+    #
+    # Returns the CRC32 checksum of the sketch file.
+    #
+    def crc32
+      r = 0xffffffff
+
+      File.open(@path) do |file|
+        file.each_byte do |b|
+          r ^= b
+          8.times { r = ((r >> 1) ^ (0xEDB88320 * (r & 1))) }
+        end
+      end
+
+      return r ^ 0xffffff
+    end
+
+  end
+end
