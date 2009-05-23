@@ -1,0 +1,12 @@
+History.txt
+Manifest.txt
+Rakefile
+README.txt
+lib/sketches.rb
+lib/sketches/config.rb
+lib/sketches/sketch.rb
+lib/sketches/extensions.rb
+lib/sketches/extensions/kernel.rb
+lib/sketches/cache.rb
+lib/sketches/sketches.rb
+lib/sketches/version.rb
