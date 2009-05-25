@@ -139,6 +139,9 @@ module Sketches
       end
     end
 
+    #
+    # Returns the next available sketch id.
+    #
     def next_id
       size + 1
     end
