@@ -153,5 +153,12 @@ module Sketches
 
     alias each_sketch each_value
 
+    #
+    # Returns the String representation of the cache.
+    #
+    def to_s
+      values.inject('') { |str,sketch| str << sketch }
+    end
+
   end
 end
