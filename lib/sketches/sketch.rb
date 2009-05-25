@@ -116,14 +116,17 @@ module Sketches
     # Returns the String representation of the sketch.
     #
     def to_s(verbose=false)
-      str = @id.to_s
+      str = "##{@id}"
       str << ": #{@name}" if @name
       str << "\n\n"
 
       if File.file?(@path)
         File.open(@path) do |file|
           unless verbose
-            4.times { str << "  #{file.read_line}" }
+            4.times do
+              break if file.eof?
+              str << "  #{file.readline}"
+            end
           else
             file.each_line { |line| str << "  #{line}" }
           end
