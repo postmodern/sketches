@@ -31,20 +31,44 @@ module Sketches
     # Default pause between checking if sketches were modified
     PAUSE = 3
 
+    #
+    # Returns the current editor to use for editing sketches.
+    #
+    #   Config.editor
+    #   # => 'pico'
+    #
     def Config.editor
       @@sketches_editor || EDITOR
     end
 
+    #
+    # Use the specified _new_editor_ to edit sketches.
+    #
+    #   Config.editor = 'gvim'
+    #
     def Config.editor=(new_editor)
       @@sketches_editor = new_editor
     end
 
+    #
+    # Returns the current number of seconds to pause in between checking
+    # if any sketches were modified.
+    #
+    #   Config.pause
+    #   # => 3
+    #
     def Config.pause
       @@sketches_pause || PAUSE
     end
 
-    def Config.pause=(new_pause)
-      @@sketches_pause = new_pause
+    #
+    # Use the specified number of _seconds_ to pause in between checking
+    # if any sketches were modified.
+    #
+    #   Config.pause = 2
+    #
+    def Config.pause=(seconds)
+      @@sketches_pause = seconds
     end
   end
 end
