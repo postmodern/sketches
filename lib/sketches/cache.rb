@@ -139,7 +139,7 @@ module Sketches
       end
     end
 
-    alias :each_value :each_sketch
+    alias each_sketch each_value
 
   end
 end
