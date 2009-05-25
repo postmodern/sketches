@@ -66,7 +66,7 @@ module Sketches
     #
     def synchronize(&block)
       @mutex.synchronize(&block)
-      return self
+      return nil
     end
 
     #
