@@ -53,6 +53,14 @@ module Sketches
     end
 
     #
+    # Returns +true+ if the cache is still checking if any sketches have
+    # been modified, returns +false+ otherwise.
+    #
+    def running?
+      @thread.alive?
+    end
+
+    #
     # Provides thread-safe access to the cache.
     #
     def synchronize(&block)
