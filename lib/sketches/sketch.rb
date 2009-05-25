@@ -73,7 +73,7 @@ module Sketches
     # Spawns the Sketches.editor with the path of the sketch.
     #
     def edit
-      system(Config.editor,@path)
+      system(Config.editor.to_s,@path)
     end
 
     #
