@@ -139,7 +139,10 @@ module Sketches
       end
     end
 
-    alias next_id size
+    def next_id
+      size + 1
+    end
+
     alias each_sketch each_value
 
   end
