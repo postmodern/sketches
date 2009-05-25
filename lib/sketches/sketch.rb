@@ -60,6 +60,8 @@ module Sketches
       else
         Tempfile.open('sketch') do |file|
           @path = file.path
+
+          file.write("# -*- ruby -*-\n\n# vim: syntax=Ruby")
         end
       end
     end
