@@ -50,7 +50,7 @@ module Sketches
       @name = options[:name]
 
       @mtime = Time.now
-      @checksum = nil
+      @checksum = 0
       @mutex = Mutex.new
 
       if options[:path]
@@ -59,6 +59,8 @@ module Sketches
       else
         TempSketch.open { |file| @path = file.path }
       end
+
+      reload!
     end
 
     #
@@ -83,11 +85,7 @@ module Sketches
     def stale?
       if File.file?(@path)
         if File.mtime(@path) > @mtime
-          new_checksum = crc32
-
-          if (@checksum.nil? || new_checksum != @checksum)
-            return true
-          end
+          return crc32 != @checksum
         end
       end
 
@@ -158,7 +156,7 @@ module Sketches
         end
       end
 
-      return r ^ 0xffffff
+      return r ^ 0xffffffff
     end
 
   end
