@@ -46,6 +46,8 @@ module Sketches
     return nil
   end
 
+  @@sketches_cache = nil
+
   #
   # The cache of sketches.
   #
