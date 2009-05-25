@@ -27,6 +27,10 @@ module Kernel
     Sketchs.sketch(id_or_name)
   end
 
+  def sketch_from(path)
+    Sketches.from(path)
+  end
+
   def name_sketch(id,name)
     Sketches.name(id,name)
   end

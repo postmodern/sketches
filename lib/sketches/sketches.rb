@@ -50,6 +50,12 @@ module Sketches
     end
   end
 
+  def Sketches.from(path)
+    Sketches.cache.syncrhonize do
+      Sketches.cache.reuse_sketch(path)
+    end
+  end
+
   def Sketches.name(id,name)
     Sketches.cache.syncrhonize do
       Sketches.cache.name_sketch(id,name)
