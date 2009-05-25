@@ -21,6 +21,7 @@
 #
 
 require 'sketches/config'
+require 'sketches/cache'
 
 module Sketches
   def Sketches.editor
