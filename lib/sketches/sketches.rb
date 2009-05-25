@@ -82,7 +82,7 @@ module Sketches
   #   Sketches.from 'path/to/foo.rb'
   #
   def Sketches.from(path)
-    Sketches.cache.syncrhonize do
+    Sketches.cache.synchronize do
       Sketches.cache.reuse_sketch(path)
     end
   end
