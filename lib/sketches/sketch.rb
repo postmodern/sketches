@@ -21,7 +21,6 @@
 #
 
 require 'sketches/config'
-require 'sketches/sketches'
 require 'sketches/temp_sketch'
 
 require 'thread'
@@ -74,7 +73,7 @@ module Sketches
     # Spawns the Sketches.editor with the path of the sketch.
     #
     def edit
-      system(Sketches.editor,@path)
+      system(Config.editor,@path)
     end
 
     #

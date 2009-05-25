@@ -24,14 +24,6 @@ require 'sketches/config'
 require 'sketches/cache'
 
 module Sketches
-  def Sketches.editor
-    @@sketches_editor || Config::EDITOR
-  end
-
-  def Sketches.editor=(new_editor)
-    @@sketches_editor = new_editor
-  end
-
   def Sketches.start(&block)
     block.call(self) if block
   end

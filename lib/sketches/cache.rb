@@ -22,15 +22,11 @@
 
 require 'sketches/exceptions/unknown_sketch'
 require 'sketches/config'
-require 'sketches/sketch'
 
 require 'thread'
 
 module Sketches
   class Cache < Hash
-
-    # Seconds to wait between polling sketches
-    PAUSE = 3
 
     #
     # Creates a new Sketches cache.
@@ -50,7 +46,7 @@ module Sketches
             end
           end
 
-          sleep(PAUSE)
+          sleep(Config.pause)
         end
       end
     end

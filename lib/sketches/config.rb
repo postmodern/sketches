@@ -27,5 +27,24 @@ module Sketches
 
     # Default editor to use
     EDITOR = ENV['EDITOR']
+
+    # Default pause between checking if sketches were modified
+    PAUSE = 3
+
+    def Config.editor
+      @@sketches_editor || EDITOR
+    end
+
+    def Config.editor=(new_editor)
+      @@sketches_editor = new_editor
+    end
+
+    def Config.pause
+      @@sketches_pause || PAUSE
+    end
+
+    def Config.pause=(new_pause)
+      @@sketches_pause = new_pause
+    end
   end
 end
