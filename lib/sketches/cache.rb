@@ -79,8 +79,19 @@ module Sketches
         id = next_id
         name = id_or_name
 
-        return self[id] = Sketch.new(id,name)
+        return self[id] = Sketch.new(id,:name => name)
       end
+    end
+
+    #
+    # Creates a new sketch using the existing _path_.
+    #
+    #   reuse_sketch 'path/to/foo.rb'
+    #
+    def reuse_sketch(path)
+      id = next_id
+
+      return self[id] = Sketch.new(id,:path => path)
     end
 
     #

@@ -40,17 +40,27 @@ module Sketches
 
     #
     # Creates a new sketch object with the specified _id_ and the given
-    # _name_.
+    # _options_.
     #
-    def initialize(id,name=nil)
+    # _options_ may contain the following keys:
+    # <tt>:name</tt>:: The name of the sketch.
+    # <tt>:path</tt>:: The path to an existing sketch.
+    #
+    def initialize(id,options={})
       @id = id
-      @name = name
+      @name = options[:name]
+
       @mtime = Time.now
       @checksum = nil
       @mutex = Mutex.new
 
-      TempFile.open('sketch') do |file|
-        @path = file.path
+      if options[:path]
+        @path = options[:path]
+        @name ||= File.basename(@path)
+      else
+        TempFile.open('sketch') do |file|
+          @path = file.path
+        end
       end
     end
 
