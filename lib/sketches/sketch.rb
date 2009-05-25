@@ -58,7 +58,7 @@ module Sketches
         @path = options[:path]
         @name ||= File.basename(@path)
       else
-        TempFile.open('sketch') do |file|
+        Tempfile.open('sketch') do |file|
           @path = file.path
         end
       end
