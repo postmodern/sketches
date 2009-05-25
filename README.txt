@@ -22,7 +22,7 @@ code changes.
 
 == LICENSE:
 
-Sketches
+Sketches - A Ruby library for live programming.
 
 Copyright (c) 2009 Hal Brodigan (postmodern.mod3 at gmail.com)
 
