@@ -31,6 +31,9 @@ module Sketches
     # Default pause between checking if sketches were modified
     PAUSE = 3
 
+    @@sketches_editor = EDITOR
+    @@sketches_pause = PAUSE
+
     #
     # Returns the current editor to use for editing sketches.
     #
@@ -38,7 +41,7 @@ module Sketches
     #   # => 'pico'
     #
     def Config.editor
-      @@sketches_editor || EDITOR
+      @@sketches_editor
     end
 
     #
@@ -58,7 +61,7 @@ module Sketches
     #   # => 3
     #
     def Config.pause
-      @@sketches_pause || PAUSE
+      @@sketches_pause
     end
 
     #
