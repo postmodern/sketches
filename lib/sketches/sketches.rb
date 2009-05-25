@@ -102,8 +102,6 @@ module Sketches
   # Print out all of the sketches.
   #
   def Sketches.print
-    Sketches.cache.synchronize do
-      puts Sketches.cache
-    end
+    Sketches.cache.synchronize { puts Sketches.cache }
   end
 end
