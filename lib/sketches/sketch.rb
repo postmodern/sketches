@@ -22,9 +22,9 @@
 
 require 'sketches/config'
 require 'sketches/sketches'
+require 'sketches/temp_sketch'
 
 require 'thread'
-require 'tempfile'
 
 module Sketches
   class Sketch
@@ -58,11 +58,7 @@ module Sketches
         @path = options[:path]
         @name ||= File.basename(@path)
       else
-        Tempfile.open('sketch') do |file|
-          @path = file.path
-
-          file.write("# -*- ruby -*-\n\n# vim: syntax=Ruby")
-        end
+        TempSketch.open { |file| @path = file.path }
       end
     end
 
