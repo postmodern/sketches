@@ -24,7 +24,7 @@ require 'sketches/exceptions/unknown_sketch'
 require 'sketches/config'
 require 'sketches/sketch'
 
-require 'mutex'
+require 'thread'
 
 module Sketches
   class Cache < Hash

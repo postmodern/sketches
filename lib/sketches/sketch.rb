@@ -23,7 +23,7 @@
 require 'sketches/config'
 require 'sketches/sketches'
 
-require 'mutex'
+require 'thread'
 require 'tempfile'
 
 module Sketches
