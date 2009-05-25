@@ -24,7 +24,7 @@ require 'sketches/sketches'
 
 module Kernel
   def sketch(id_or_name=nil)
-    Sketchs.sketch(id_or_name)
+    Sketches.sketch(id_or_name)
   end
 
   def sketch_from(path)
