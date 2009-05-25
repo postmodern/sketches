@@ -36,10 +36,12 @@ module Sketches
     return nil
   end
 
-  @@sketches_cache = Cache.new
-
   def Sketches.cache
-    @@sketches_cache
+    unless @@sketches_cache
+      @@sketches_cache = Cache.new
+    end
+
+    return @@sketches_cache
   end
 
   def Sketches.sketch(id_or_name)
