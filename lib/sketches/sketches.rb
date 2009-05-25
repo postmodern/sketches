@@ -24,6 +24,16 @@ require 'sketches/config'
 require 'sketches/cache'
 
 module Sketches
+  #
+  # Configure Sketches with the given _options_.
+  #
+  # _options_ may contain the following keys:
+  # <tt>:editor</tt>:: The editor to use to edit sketches.
+  # <tt>:pause</tt>:: The number of seconds to pause in-between
+  #                   checking if any sketches were modified.
+  #
+  #   Sketches.config :editor => 'gvim', :pause => 2
+  #
   def Sketches.config(options={})
     if options[:editor]
       Config.editor = options[:editor]
@@ -36,6 +46,9 @@ module Sketches
     return nil
   end
 
+  #
+  # The cache of sketches.
+  #
   def Sketches.cache
     unless @@sketches_cache
       @@sketches_cache = Cache.new
@@ -44,6 +57,14 @@ module Sketches
     return @@sketches_cache
   end
 
+  #
+  # Edits the sketch with the specified _id_or_name_. If no sketch exists
+  # with the specified _id_or_name_, one will be created.
+  #
+  #   Sketches.sketch 2
+  #
+  #   Sketches.sketch :foo
+  #
   def Sketches.sketch(id_or_name)
     Sketches.cache.synchronize do
       sketch = Sketches.cache[id_or_name]
@@ -53,12 +74,22 @@ module Sketches
     end
   end
 
+  #
+  # Creates a new sketch using the specified _path_.
+  #
+  #   Sketches.from 'path/to/foo.rb'
+  #
   def Sketches.from(path)
     Sketches.cache.syncrhonize do
       Sketches.cache.reuse_sketch(path)
     end
   end
 
+  #
+  # Names the sketch with the specified _id_ with the specified _name_.
+  #
+  #   Sketches.name 2, :foo
+  #
   def Sketches.name(id,name)
     Sketches.cache.syncrhonize do
       Sketches.cache.name_sketch(id,name)
