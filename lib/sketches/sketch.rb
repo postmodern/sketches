@@ -124,7 +124,12 @@ module Sketches
         File.open(@path) do |file|
           unless verbose
             4.times do
-              break if file.eof?
+              if file.eof?
+                str << "\n" unless str[-1..-1] == "\n"
+                str << "  ..."
+                break
+              end
+
               str << "  #{file.readline}"
             end
           else
