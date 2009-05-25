@@ -24,8 +24,16 @@ require 'sketches/config'
 require 'sketches/cache'
 
 module Sketches
-  def Sketches.start(&block)
-    block.call(self) if block
+  def Sketches.config(options={})
+    if options[:editor]
+      Config.editor = options[:editor]
+    end
+
+    if options[:pause]
+      Config.pause = options[:pause]
+    end
+
+    return nil
   end
 
   @@sketches_cache = Cache.new
