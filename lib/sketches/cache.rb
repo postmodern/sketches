@@ -134,7 +134,7 @@ module Sketches
     def [](id_or_name)
       if id_or_name.kind_of?(Integer)
         return super(id_or_name)
-      else
+      elsif (id_or_name.kind_of?(String) || id_or_name.kind_of?(Symbol))
         return find_by_name(id_or_name)
       end
     end
