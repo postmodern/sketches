@@ -95,4 +95,15 @@ module Sketches
       Sketches.cache.name_sketch(id,name)
     end
   end
+
+  #
+  # Print out all of the sketches.
+  #
+  def Sketches.print
+    Sketches.cache.synchronize do
+      Sketches.cache.each_sketch do |sketch|
+        sketch.synchronize { puts sketch }
+      end
+    end
+  end
 end

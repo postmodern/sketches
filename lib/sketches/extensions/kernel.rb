@@ -34,4 +34,8 @@ module Kernel
   def name_sketch(id,name)
     Sketches.name(id,name)
   end
+
+  def sketches
+    Sketches.print
+  end
 end
