@@ -66,9 +66,15 @@ module Sketches
     end
 
     #
-    # Use the specified _new_editor_ to edit sketches.
+    # Use the specified _new_editor_ to edit sketches. _new_editor_ may
+    # be either a String or a lambda which accepts the +path+ of the sketch
+    # and returns the command to run.
     #
     #   Config.editor = 'gvim'
+    #
+    #   Config.editor = lambda { |path|
+    #     "xterm -fg gray -bg black -e vim #{path} &"
+    #   }
     #
     def Config.editor=(new_editor)
       @@sketches_editor = new_editor
