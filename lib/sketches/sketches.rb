@@ -108,6 +108,8 @@ module Sketches
   # Saves the sketch with the specified _id_or_name_ to the specified
   # _path_.
   #
+  #   Sketches.save 2, 'path/to/example.rb'
+  #
   #   Sketches.save :foo, 'path/to/foo.rb'
   #
   def Sketches.save(id_or_name,path)

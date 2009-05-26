@@ -57,6 +57,8 @@ module Kernel
   # Saves the sketch with the specified _id_or_name_ to the specified
   # _path_.
   #
+  #   save_sketch 2, 'path/to/example.rb'
+  #
   #   save_sketch :foo, 'path/to/foo.rb'
   #
   def save_sketch(id_or_name,path)
