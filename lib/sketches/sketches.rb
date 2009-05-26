@@ -99,6 +99,18 @@ module Sketches
   end
 
   #
+  # Saves the sketch with the specified _id_or_name_ to the specified
+  # _path_.
+  #
+  def Sketches.save(id_or_name,path)
+    Sketches.cache.synchronize do
+      if (sketch = Sketches.cache[id_or_name])
+        sketch.save(path)
+      end
+    end
+  end
+
+  #
   # Print out all of the sketches.
   #
   def Sketches.print

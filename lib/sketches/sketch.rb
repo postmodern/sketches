@@ -24,6 +24,7 @@ require 'sketches/config'
 require 'sketches/temp_sketch'
 
 require 'thread'
+require 'fileutils'
 
 module Sketches
   class Sketch
@@ -105,6 +106,18 @@ module Sketches
         rescue LoadError => e
           STDERR.puts "#{e.class}: #{e.message}"
         end
+      end
+
+      return false
+    end
+
+    #
+    # Saves the sketch to the specified _path_.
+    #
+    def save(path)
+      if (File.file?(@path) && @path != path)
+        FileUtils.cp(@path,path)
+        return true
       end
 
       return false

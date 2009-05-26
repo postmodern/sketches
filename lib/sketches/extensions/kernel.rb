@@ -35,6 +35,10 @@ module Kernel
     Sketches.name(id,name)
   end
 
+  def save_sketch(id_or_name,path)
+    Sketches.save(id_or_name,path)
+  end
+
   def sketches
     Sketches.print
   end
