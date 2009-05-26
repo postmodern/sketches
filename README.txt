@@ -11,7 +11,7 @@ code changes.
 
 == FEATURES:
 
-* Spawn your choice of editor from IRB.
+* Spawn an editor of your choosing from IRB.
 * Automatically reload your code as it changes.
 
 == INSTALL:
