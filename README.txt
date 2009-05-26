@@ -37,33 +37,33 @@ Sketches can be configured to use a custom editor command:
 
 * Open a new sketch:
 
-  sketch
+    sketch
 
 * Open a new named sketch:
 
-  sketch :foo
+    sketch :foo
 
 * Open a sketch from an existing file:
 
-  sketch_from 'path/to/bar.rb'
+    sketch_from 'path/to/bar.rb'
 
 * Reopen an existing sketch:
 
-  sketch 2
+    sketch 2
 
-  sketch :foo
+    sketch :foo
 
 * List all sketches:
 
-  sketches
+    sketches
 
 * Name a sketch:
 
-  name_sketch 2, :foo
+    name_sketch 2, :foo
 
 * Save a sketch to an alternant location:
 
-  save_sketch :foo, 'path/to/foo.rb'
+    save_sketch :foo, 'path/to/foo.rb'
 
 == LICENSE:
 
