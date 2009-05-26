@@ -36,6 +36,10 @@ module Sketches
   #
   #   Sketches.config :editor => 'gvim', :pause => 2
   #
+  #   Sketches.config :editor => lambda { |path|
+  #     "xterm -fg gray -bg black -e vim #{path} &"
+  #   }
+  #
   def Sketches.config(options={})
     if options[:tmpdir]
       Config.tmpdir = options[:tmpdir]
