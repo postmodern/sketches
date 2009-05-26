@@ -1,5 +1,6 @@
 = Sketches
 
+* http://sketches.rubyforge.org/
 * http://github.com/postmodern/sketches/
 * Postmodern (postmodern.mod3 at gmail.com)
 
