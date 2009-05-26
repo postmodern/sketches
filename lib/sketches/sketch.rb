@@ -76,7 +76,13 @@ module Sketches
     # Spawns the Sketches.editor with the path of the sketch.
     #
     def edit
-      system(Config.editor.to_s,@path)
+      if Config.editor.kind_of?(Proc)
+        cmd = Config.editor.call(@path)
+      else
+        cmd = "#{Config.editor} #{@path}"
+      end
+
+      system(cmd)
     end
 
     #
