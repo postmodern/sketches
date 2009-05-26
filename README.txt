@@ -6,13 +6,15 @@
 == DESCRIPTION:
 
 Sketches allows you to create and edit Ruby code from the comfort of your
-editor, while having it safely reloaded in an IRB session whenever your
-code changes.
+editor, while having it safely reloaded in IRB whenever changes to the
+code are saved.
 
 == FEATURES:
 
 * Spawn an editor of your choosing from IRB.
-* Automatically reload your code as it changes.
+* Automatically reload your code when it changes.
+* Use a custom editor command.
+* Use a custom temp directory to store sketches in.
 
 == INSTALL:
 
@@ -22,7 +24,7 @@ Then require sketches in your <tt>.irbrc</tt> file:
 
   require 'sketches'
 
-Sketches can also be configured to use a custom editor command:
+Sketches can be configured to use a custom editor command:
 
   Sketches.config :editor => 'gvim'
 
@@ -44,7 +46,7 @@ Sketches can also be configured to use a custom editor command:
 
   sketch_from 'path/to/bar.rb'
 
-* Open an existing sketch:
+* Reopen an existing sketch:
 
   sketch 2
 
