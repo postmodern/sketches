@@ -14,11 +14,53 @@ code changes.
 * Spawn your choice of editor from IRB.
 * Automatically reload your code as it changes.
 
-== EXAMPLES:
-
 == INSTALL:
 
   $ sudo gem install sketches
+
+Then require sketches in your <tt>.irbrc</tt> file:
+
+  require 'sketches'
+
+Sketches can also be configured to use a custom editor command:
+
+  Sketches.config :editor => 'gvim'
+
+  Config.editor = lambda { |path|
+    "xterm -fg gray -bg black -e vim #{path} &"
+  }
+
+== EXAMPLES:
+
+* Open a new sketch:
+
+  sketch
+
+* Open a new named sketch:
+
+  sketch :foo
+
+* Open a sketch from an existing file:
+
+  sketch_from 'path/to/bar.rb'
+
+* Open an existing sketch:
+
+  sketch 2
+
+  sketch :foo
+
+* List all sketches:
+
+  sketches
+
+* Name a sketch:
+
+  name_sketch 2, :foo
+
+* Save a sketch to an alternant location:
+
+  save_sketch :foo, 'path/to/foo.rb'
 
 == LICENSE:
 
