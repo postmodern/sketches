@@ -1,3 +1,5 @@
+require 'sketches/config'
+
 require 'tempfile'
 
 module Sketches
@@ -10,10 +12,10 @@ module Sketches
     EXT = '.rb'
 
     #
-    # Create a new TempSketch object in the given _tmpdir_.
+    # Create a new TempSketch object.
     #
-    def initialize(tmpdir=Dir.tmpdir)
-      super(BASENAME,tmpdir)
+    def initialize
+      super(BASENAME,Config.tmpdir)
     end
 
     private

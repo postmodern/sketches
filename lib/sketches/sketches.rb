@@ -28,6 +28,8 @@ module Sketches
   # Configure Sketches with the given _options_.
   #
   # _options_ may contain the following keys:
+  # <tt>:tmpdir</tt>:: Directory to store temporary sketches in.
+  #                    Defaults to Dir.tmpdir if unspecified.
   # <tt>:editor</tt>:: The editor to use to edit sketches.
   # <tt>:pause</tt>:: The number of seconds to pause in-between
   #                   checking if any sketches were modified.
@@ -35,6 +37,10 @@ module Sketches
   #   Sketches.config :editor => 'gvim', :pause => 2
   #
   def Sketches.config(options={})
+    if options[:tmpdir]
+      Config.tmpdir = options[:tmpdir]
+    end
+
     if options[:editor]
       Config.editor = options[:editor]
     end

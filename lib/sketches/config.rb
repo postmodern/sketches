@@ -20,10 +20,12 @@
 #++
 #
 
+require 'tmpdir'
+
 module Sketches
   module Config
-    # Directory to store sketches in
-    DIR = File.expand_path(File.join(ENV['HOME'],'.sketches'))
+    # Directory to store temporary sketches in
+    TMPDIR = Dir.tmpdir
 
     # Default editor to use
     EDITOR = ENV['EDITOR']
@@ -32,7 +34,26 @@ module Sketches
     PAUSE = 3
 
     @@sketches_editor = EDITOR
+    @@sketches_tmpdir = TMPDIR
     @@sketches_pause = PAUSE
+
+    #
+    # Returns the directory to store temporary sketches in.
+    #
+    #   Config.tmpdir
+    #   # => "/tmp"
+    #
+    def Config.tmpdir
+      @@sketches_tmpdir
+    end
+
+    #
+    # Sets the directory to store temporary sketches in to the specified
+    # _directory_.
+    #
+    def Config.tmpdir=(directory)
+      @@sketches_tmpdir = File.expand_path(dir)
+    end
 
     #
     # Returns the current editor to use for editing sketches.
