@@ -105,7 +105,7 @@ module Sketches
   #   Sketches.name 2, :foo
   #
   def Sketches.name(id,name)
-    Sketches.cache.syncrhonize do
+    Sketches.cache.synchronize do
       Sketches.cache.name_sketch(id,name)
     end
   end
