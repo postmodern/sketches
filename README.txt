@@ -67,7 +67,7 @@ Sketches can be configured to use a custom editor command:
 
 == LICENSE:
 
-Sketches - A Ruby library for live programming.
+Sketches - A Ruby library for live programming and code reloading.
 
 Copyright (c) 2009 Hal Brodigan (postmodern.mod3 at gmail.com)
 
