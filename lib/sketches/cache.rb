@@ -156,8 +156,8 @@ module Sketches
     #
     # Returns the String representation of the cache.
     #
-    def to_s
-      values.inject('') { |str,sketch| str << sketch }
+    def to_s(verbose=false)
+      values.inject('') { |str,sketch| str << sketch.to_s(verbose) }
     end
 
   end
