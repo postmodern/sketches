@@ -113,7 +113,7 @@ module Sketches
       end
 
       sketch = self[id]
-      sketch.syncrhonize { sketch.name = name.to_sym }
+      sketch.synchronize { sketch.name = name.to_sym }
 
       return sketch
     end
