@@ -93,7 +93,9 @@ module Sketches
   #
   def Sketches.from(path)
     Sketches.cache.synchronize do
-      Sketches.cache.reuse_sketch(path)
+      sketch = Sketches.cache.reuse_sketch(path)
+
+      sketch.synchronize { sketch.edit }
     end
   end
 
