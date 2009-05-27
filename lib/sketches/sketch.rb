@@ -20,6 +20,7 @@
 #++
 #
 
+require 'sketches/exceptions/editor_not_defined'
 require 'sketches/config'
 require 'sketches/temp_sketch'
 
@@ -76,7 +77,9 @@ module Sketches
     # Spawns the Sketches.editor with the path of the sketch.
     #
     def edit
-      if Config.editor.kind_of?(Proc)
+      if Config.editor.nil?
+        raise(EditorNotDefined,"no editor has defined via ENV['EDITOR'] or Sketches.config",caller)
+      elsif Config.editor.kind_of?(Proc)
         cmd = Config.editor.call(@path)
       else
         cmd = "#{Config.editor} #{@path}"

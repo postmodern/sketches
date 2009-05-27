@@ -20,5 +20,7 @@
 #++
 #
 
-require 'sketches/exceptions/unknown_sketch'
-require 'sketches/exceptions/editor_not_defined'
+module Sketches
+  class EditorNotDefined < RuntimeError
+  end
+end

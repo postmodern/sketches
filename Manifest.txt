@@ -5,6 +5,7 @@ README.txt
 lib/sketches.rb
 lib/sketches/exceptions.rb
 lib/sketches/exceptions/unknown_sketch.rb
+lib/sketches/exceptions/editor_not_defined.rb
 lib/sketches/config.rb
 lib/sketches/temp_sketch.rb
 lib/sketches/sketch.rb
