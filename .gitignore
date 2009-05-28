@@ -1,6 +1,7 @@
 doc
 pkg
 tmp/*
+web/*
 .DS_Store
 *.swp
 *~
