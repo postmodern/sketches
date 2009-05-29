@@ -29,8 +29,8 @@ Sketches can be configured to use a custom editor command:
 
   Sketches.config :editor => 'gvim'
 
-  Sketches.config :editor => lambda { |path|
-    "xterm -fg gray -bg black -e vim #{path} &"
+  Sketches.config :editor => 'vim', :terminal => lambda { |cmd|
+    "xterm -fg gray -bg black -e #{cmd.dump} &"
   }
 
 == EXAMPLES:
