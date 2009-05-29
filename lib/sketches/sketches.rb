@@ -30,19 +30,24 @@ module Sketches
   # _options_ may contain the following keys:
   # <tt>:tmpdir</tt>:: Directory to store temporary sketches in.
   #                    Defaults to Dir.tmpdir if unspecified.
+  # <tt>:term</tt>:: The terminal to optionally run the editor within.
   # <tt>:editor</tt>:: The editor to use to edit sketches.
   # <tt>:pause</tt>:: The number of seconds to pause in-between
   #                   checking if any sketches were modified.
   #
   #   Sketches.config :editor => 'gvim', :pause => 2
   #
-  #   Sketches.config :editor => lambda { |path|
-  #     "xterm -fg gray -bg black -e vim #{path} &"
+  #   Sketches.config :editor => 'vim', :term => lambda { |cmd|
+  #     "xterm -fg gray -bg black -e #{cmd.dump} &"
   #   }
   #
   def Sketches.config(options={})
     if options[:tmpdir]
       Config.tmpdir = options[:tmpdir]
+    end
+
+    if options[:term]
+      Config.term = options[:term]
     end
 
     if options[:editor]
