@@ -39,9 +39,11 @@ module Sketches
   #
   #   Sketches.config :editor => 'gvim', :pause => 2
   #
-  #   Sketches.config :editor => 'vim', :terminal => lambda { |cmd|
-  #     "xterm -fg gray -bg black -e #{cmd.dump} &"
-  #   }
+  #   Sketches.config :editor => 'vim',
+  #                   :background => true,
+  #                   :terminal => lambda { |cmd|
+  #                     "xterm -fg gray -bg black -e #{cmd.dump}"
+  #                   }
   #
   def Sketches.config(options={})
     if options[:tmpdir]
