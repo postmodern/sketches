@@ -30,6 +30,8 @@ module Sketches
   # _options_ may contain the following keys:
   # <tt>:tmpdir</tt>:: Directory to store temporary sketches in.
   #                    Defaults to Dir.tmpdir if unspecified.
+  # <tt>:background</tt>:: Specifies wether to run the editor as a
+  #                        background or a foreground process.
   # <tt>:terminal</tt>:: The terminal to optionally run the editor within.
   # <tt>:editor</tt>:: The editor to use to edit sketches.
   # <tt>:pause</tt>:: The number of seconds to pause in-between
@@ -44,6 +46,10 @@ module Sketches
   def Sketches.config(options={})
     if options[:tmpdir]
       Config.tmpdir = options[:tmpdir]
+    end
+
+    if options[:background]
+      Config.background = options[:background]
     end
 
     if options[:terminal]

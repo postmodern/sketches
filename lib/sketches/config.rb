@@ -33,9 +33,10 @@ module Sketches
     # Default pause between checking if sketches were modified
     PAUSE = 3
 
+    @@sketches_tmpdir = TMPDIR
+    @@sketches_background = false
     @@sketches_terminal = nil
     @@sketches_editor = EDITOR
-    @@sketches_tmpdir = TMPDIR
     @@sketches_pause = PAUSE
 
     #
@@ -54,6 +55,26 @@ module Sketches
     #
     def Config.tmpdir=(directory)
       @@sketches_tmpdir = File.expand_path(dir)
+    end
+
+    #
+    # Returns +true+ if the editor shall be ran as a background or a
+    # foreground process, returns +false+ otherwise.
+    #
+    #   Config.background
+    #   # => false
+    #
+    def Config.background
+      @@sketches_background
+    end
+
+    #
+    # Sets the background mode to the specified _mode_.
+    #
+    #   Config.background = true
+    #
+    def Config.background=(mode)
+      @@sketches_background = mode
     end
 
     #
