@@ -38,6 +38,9 @@ module Sketches
 
     # Last modification time of the sketch
     attr_reader :mtime
+ 
+    # command runner
+    RUNNER = Kernel.method(:system)
 
     #
     # Creates a new sketch object with the specified _id_ and the given
@@ -93,7 +96,11 @@ module Sketches
         end
       end
 
-      system(cmd)
+      if Config.background
+        Thread.new(cmd,&RUNNER)
+      else
+        RUNNER.call(cmd)
+      end
     end
 
     #
