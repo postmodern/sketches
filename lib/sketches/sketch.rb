@@ -85,11 +85,11 @@ module Sketches
         cmd = "#{Config.editor} #{@path}"
       end
 
-      if Config.term
-        if Config.term.kind_of?(Proc)
-          cmd = Config.term.call(cmd)
+      if Config.terminal
+        if Config.terminal.kind_of?(Proc)
+          cmd = Config.terminal.call(cmd)
         else
-          cmd = "#{Config.term} #{cmd}"
+          cmd = "#{Config.terminal} #{cmd}"
         end
       end
 

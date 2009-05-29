@@ -27,16 +27,13 @@ module Sketches
     # Directory to store temporary sketches in
     TMPDIR = Dir.tmpdir
 
-    # Terminal to optionally run the editor within
-    TERM = nil
-
     # Default editor to use
     EDITOR = ENV['EDITOR']
 
     # Default pause between checking if sketches were modified
     PAUSE = 3
 
-    @@sketches_term = TERM
+    @@sketches_terminal = nil
     @@sketches_editor = EDITOR
     @@sketches_tmpdir = TMPDIR
     @@sketches_pause = PAUSE
@@ -62,11 +59,11 @@ module Sketches
     #
     # Returns the terminal to optionally run the editor within.
     #
-    #   Config.term
+    #   Config.terminal
     #   # => "xterm"
     #
-    def Config.term
-      @@sketches_term
+    def Config.terminal
+      @@sketches_terminal
     end
 
     #
@@ -74,14 +71,14 @@ module Sketches
     # specified _new_term_. _new_term_ may either be a String or a
     # Proc.
     #
-    #   Config.term = 'gnome-terminal'
+    #   Config.terminal = 'gnome-terminal'
     #
-    #   Config.term = lambda { |cmd|
+    #   Config.terminal = lambda { |cmd|
     #     "xterm -fg gray -bg black -e #{cmd.dump} &"
     #   }
     #
-    def Config.term=(new_term)
-      @@sketches_term = new_term
+    def Config.terminal=(new_term)
+      @@sketches_terminal = new_term
     end
 
     #
