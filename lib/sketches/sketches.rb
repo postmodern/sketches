@@ -47,7 +47,7 @@ module Sketches
     end
 
     if options[:terminal]
-      Config.term = options[:terminal]
+      Config.terminal = options[:terminal]
     end
 
     if options[:editor]
