@@ -4,7 +4,7 @@ require 'rubygems'
 require 'hoe'
 require './lib/sketches/version.rb'
 
-Hoe.new('sketches', Sketches::VERSION) do |p|
+Hoe.spec('sketches') do |p|
   p.rubyforge_name = 'sketches'
   p.developer('Postmodern','postmodern.mod3@gmail.com')
   p.remote_rdoc_dir = 'docs'
