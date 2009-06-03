@@ -2,6 +2,7 @@
 
 require 'rubygems'
 require 'hoe'
+require 'hoe/signing'
 require './lib/sketches/version.rb'
 
 Hoe.spec('sketches') do |p|
