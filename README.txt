@@ -14,7 +14,10 @@ code are saved.
 
 * Spawn an editor of your choosing from IRB.
 * Automatically reload your code when it changes.
+* Run the editor in the background.
+* Run the editor in a new terminal.
 * Use a custom editor command.
+* Use a custom terminal command.
 * Use a custom temp directory to store sketches in.
 
 == INSTALL:
