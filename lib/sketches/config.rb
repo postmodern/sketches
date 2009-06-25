@@ -54,7 +54,7 @@ module Sketches
     # _directory_.
     #
     def Config.tmpdir=(directory)
-      @@sketches_tmpdir = File.expand_path(dir)
+      @@sketches_tmpdir = File.expand_path(directory)
     end
 
     #
