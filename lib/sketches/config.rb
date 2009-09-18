@@ -35,6 +35,7 @@ module Sketches
 
     @@sketches_tmpdir = TMPDIR
     @@sketches_background = false
+    @@sketches_eval_after_editor_quit = false
     @@sketches_terminal = nil
     @@sketches_editor = EDITOR
     @@sketches_pause = PAUSE
@@ -75,6 +76,26 @@ module Sketches
     #
     def Config.background=(mode)
       @@sketches_background = mode
+    end
+
+    #
+    # Returns +true+ if the sketch is eval'd immediatly
+    # on editor quit (only if background = false)
+    #
+    #   Config.eval_after_editor_quit
+    #   # => false
+    #
+    def Config.eval_after_editor_quit
+      @@sketches_eval_after_editor_quit
+    end
+
+    #
+    # When background is false, can eval immediately after editor quits.
+    #
+    #   Config.eval_after_editor_quit = true
+    #
+    def Config.eval_after_editor_quit=(mode)
+      @@sketches_eval_after_editor_quit = mode
     end
 
     #

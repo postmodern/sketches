@@ -100,6 +100,7 @@ module Sketches
         Thread.new(cmd,&RUNNER)
       else
         RUNNER.call(cmd)
+        self.reload! if Config.eval_after_editor_quit
       end
     end
 
