@@ -62,7 +62,7 @@ module Sketches
         @path = options[:path]
         @name ||= File.basename(@path)
       else
-        TempSketch.open { |file| @path = file.path }
+        TempSketch.open_temp_sketch { |file| @path = file.path }
       end
 
       reload!
@@ -156,7 +156,7 @@ module Sketches
       str << ": #{@name}" if @name
       str << "\n\n"
 
-      if File.file?(@path)
+      if @path && File.file?(@path)
         File.open(@path) do |file|
           unless verbose
             4.times do

@@ -4,7 +4,7 @@ require "sketches"
 describe "Basic Sketches usage" do
   before(:each) do
     @file_to_open = nil
-    Sketches.config :editor => lambda { |arg| @file_to_open = arg }
+    Sketches.config :editor => lambda { |fn| @file_to_open = fn }
   end
 
   it "should open a sketch from a given file" do
