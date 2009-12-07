@@ -62,7 +62,7 @@ module Sketches
         @path = options[:path]
         @name ||= File.basename(@path)
       else
-        TempSketch.open_temp_sketch { |file| @path = file.path }
+        TempSketch.open { |file| @path = file.path }
       end
 
       reload!
