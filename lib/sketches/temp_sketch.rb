@@ -36,7 +36,6 @@ module Sketches
     #
     # Create a new TempSketch object.
     #
-
     def self.open_temp_sketch(&block)
       open(BASENAME, Config.tmpdir, &block)
     end
