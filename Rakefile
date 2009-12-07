@@ -3,8 +3,8 @@
 require 'rubygems'
 require 'hoe'
 require 'hoe/signing'
+require './tasks/spec.rb'
 require './lib/sketches/version.rb'
-require "spec/rake/spectask"
 
 Hoe.spec('sketches') do
   self.rubyforge_name = 'sketches'
