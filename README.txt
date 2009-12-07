@@ -20,6 +20,14 @@ code are saved.
 * Use a custom terminal command.
 * Use a custom temp directory to store sketches in.
 
+== PROBLEMS:
+
+* Local variables cannot be loaded. Ruby defines local variables as local
+  to the file which they were defined in.
+* No support for Inotify or FSevent _yet_. It would be nice to attempt to
+  use Inotify or FSevent bindings, if available, for efficient polling of
+  sketch files.
+
 == INSTALL:
 
   $ sudo gem install sketches
