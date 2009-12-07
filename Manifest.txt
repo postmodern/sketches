@@ -16,3 +16,4 @@ lib/sketches/sketches.rb
 lib/sketches/version.rb
 tasks/spec.rb
 spec/spec_helper.rb
+spec/sketches_spec.rb
