@@ -40,6 +40,8 @@ Sketches can be configured to use a custom editor command:
 
   Sketches.config :editor => 'gvim'
 
+Sketches can also be configured to run in a new terminal:
+
   Sketches.config :editor => 'vim',
                   :background => true,
                   :terminal => lambda { |cmd|
