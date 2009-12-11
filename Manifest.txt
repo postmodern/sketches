@@ -1,6 +1,7 @@
 History.txt
 Manifest.txt
 Rakefile
+COPYING.txt
 README.txt
 lib/sketches.rb
 lib/sketches/exceptions.rb
