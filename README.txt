@@ -23,7 +23,7 @@ code are saved.
 == PROBLEMS:
 
 * Local variables cannot be loaded. Ruby defines local variables as local
-  to the file which they were defined in.
+  to the file which they were originally defined in.
 * No support for Inotify or FSevent _yet_. It would be nice to attempt to
   use Inotify or FSevent bindings, if available, for efficient polling of
   sketch files.
