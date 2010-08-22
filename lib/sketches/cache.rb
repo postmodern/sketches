@@ -1,5 +1,4 @@
 #
-#--
 # Sketches - A Ruby library for live programming and code reloading.
 #
 # Copyright (c) 2009 Hal Brodigan (postmodern.mod3 at gmail.com)
@@ -16,8 +15,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-#Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-#++
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #
 
 require 'sketches/exceptions/unknown_sketch'
@@ -53,8 +51,10 @@ module Sketches
     end
 
     #
-    # Returns +true+ if the cache is still checking if any sketches have
-    # been modified, returns +false+ otherwise.
+    # Determines if the cache is running.
+    #
+    # @return [Boolean]
+    #   Specifies whether the cache is running.
     #
     def running?
       @thread.alive?
@@ -63,16 +63,30 @@ module Sketches
     #
     # Provides thread-safe access to the cache.
     #
+    # @yield []
+    #   The given block will be ran when the cache is not being accessed
+    #   by other threads.
+    #
+    # @return [nil]
+    #
     def synchronize(&block)
       @mutex.synchronize(&block)
       return nil
     end
 
     #
-    # Creates a new Sketch with the given _id_or_name_.
+    # Creates a new sketch.
     #
+    # @param [Integer, Symbol, nil] id_or_name
+    #   The optional ID or name of the new sketch.
+    #
+    # @return [Sketch]
+    #   The new sketch.
+    #
+    # @example
     #   cache.new_sketch 2
     #
+    # @example
     #   cache.new_sketch :foobar
     #
     def new_sketch(id_or_name=nil)
@@ -89,8 +103,15 @@ module Sketches
     end
 
     #
-    # Creates a new sketch using the existing _path_.
+    # Creates a new sketch from an existing path.
     #
+    # @param [String]
+    #   The path to the old sketch.
+    #
+    # @return [Sketch]
+    #   The recycled sketch.
+    #
+    # @example
     #   reuse_sketch 'path/to/foo.rb'
     #
     def reuse_sketch(path)
@@ -100,9 +121,21 @@ module Sketches
     end
 
     #
-    # Finds the sketch with the specified _id_ and gives it then
-    # specified _name_.
+    # Finds and names a sketch.
     #
+    # @param [Integer] id
+    #   The ID of the sketch to name.
+    #
+    # @param [Symbol] name
+    #   The name to give to the sketch.
+    #
+    # @return [Sketch]
+    #   The newly named sketch.
+    #
+    # @raise [UnknownSketch]
+    #   Could not find a sketch with the given ID.
+    #
+    # @example
     #   cache.name_sketch 1, :foobar
     #
     def name_sketch(id,name)
@@ -119,8 +152,15 @@ module Sketches
     end
 
     #
-    # Returns the sketch with the specified _name_.
+    # Finds a sketch with a given name.
     #
+    # @param [Symbol] name
+    #   The name to search for.
+    #
+    # @return [Sketch, nil]
+    #   The sketch with the given name.
+    #
+    # @example
     #   cache.find_by_name :foobar
     #
     def find_by_name(name)
@@ -134,7 +174,13 @@ module Sketches
     end
 
     #
-    # Returns the sketch with the specified _id_or_name_.
+    # Finds a sketch in the cache.
+    #
+    # @param [Integer, Symbol] id_or_name
+    #   The sketch ID or name to search for.
+    #
+    # @return [Sketch, nil]
+    #   The sketch.
     #
     def [](id_or_name)
       if id_or_name.kind_of?(Integer)
@@ -145,7 +191,10 @@ module Sketches
     end
 
     #
-    # Returns the next available sketch id.
+    # The next available sketch ID.
+    #
+    # @return [Integer]
+    #   The next available sketch ID.
     #
     def next_id
       size + 1
@@ -154,7 +203,13 @@ module Sketches
     alias each_sketch each_value
 
     #
-    # Returns the String representation of the cache.
+    # Converts the sketch cache to a String.
+    #
+    # @param [Boolean] verbose
+    #   Specifies whether verbose output should be generated.
+    #
+    # @return [String]
+    #   A human readable representations of the cache.
     #
     def to_s(verbose=false)
       values.inject('') { |str,sketch| str << sketch.to_s(verbose) }

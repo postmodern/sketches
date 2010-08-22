@@ -1,5 +1,4 @@
 #
-#--
 # Sketches - A Ruby library for live programming and code reloading.
 #
 # Copyright (c) 2009 Hal Brodigan (postmodern.mod3 at gmail.com)
@@ -16,8 +15,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-#Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-#++
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #
 
 require 'sketches/exceptions/editor_not_defined'
@@ -43,12 +41,19 @@ module Sketches
     RUNNER = Kernel.method(:system)
 
     #
-    # Creates a new sketch object with the specified _id_ and the given
-    # _options_.
+    # Creates a new {Sketch}.
     #
-    # _options_ may contain the following keys:
-    # <tt>:name</tt>:: The name of the sketch.
-    # <tt>:path</tt>:: The path to an existing sketch.
+    # @param [Integer] id
+    #   The ID of the sketch.
+    #
+    # @param [Hash] options
+    #   Additional options.
+    #
+    # @option options [Symbol] :name
+    #   The optional name of the sketch.
+    #
+    # @option options [String] :path
+    #   The path to the existing sketch.
     #
     def initialize(id,options={})
       @id = id
@@ -71,13 +76,19 @@ module Sketches
     #
     # Provides thread-safe access to the sketch.
     #
+    # @yield []
+    #   The given block will be called, when no other threads are accessing
+    #   the sketch.
+    #
+    # @return [nil]
+    #
     def synchronize(&block)
       @mutex.synchronize(&block)
       return nil
     end
 
     #
-    # Spawns the Sketches.editor with the path of the sketch.
+    # Spawns the {Config.editor} with the path of the sketch.
     #
     def edit
       if Config.editor.nil?
@@ -105,8 +116,11 @@ module Sketches
     end
 
     #
-    # Returns +true+ if the sketch has become stale and needs reloading,
-    # returns +false+ otherwise.
+    # Determines whether the sketch has become stale.
+    #
+    # @return [Boolean]
+    #   Specifies whether the file that contains the sketch has recently
+    #   changed.
     #
     def stale?
       if File.file?(@path)
@@ -120,6 +134,9 @@ module Sketches
 
     #
     # Reloads the sketch.
+    #
+    # @return [Boolean]
+    #   Specifies whether the reload was successfull.
     #
     def reload!
       if File.file?(@path)
@@ -137,7 +154,13 @@ module Sketches
     end
 
     #
-    # Saves the sketch to the specified _path_.
+    # Saves the sketch.
+    #
+    # @param [String] path
+    #   The file to save the sketch to.
+    #
+    # @return [Boolean]
+    #   Specifies whether the sketch was successfully saved.
     #
     def save(path)
       if (File.file?(@path) && @path != path)
@@ -149,7 +172,10 @@ module Sketches
     end
 
     #
-    # Returns the String representation of the sketch.
+    # Converts the sketch to a human-readable String.
+    #
+    # @return [String]
+    #   The String representation of the sketch.
     #
     def to_s(verbose=false)
       str = "##{@id}"
@@ -182,7 +208,10 @@ module Sketches
     protected
 
     #
-    # Returns the CRC32 checksum of the sketch file.
+    # Calculates the CRC32 checksum of the sketch file.
+    #
+    # @return [Integer]
+    #   The CRC32 checksum of the sketch file.
     #
     def crc32
       r = 0xffffffff

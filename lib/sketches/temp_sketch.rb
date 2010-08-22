@@ -1,5 +1,4 @@
 #
-#--
 # Sketches - A Ruby library for live programming and code reloading.
 #
 # Copyright (c) 2009 Hal Brodigan (postmodern.mod3 at gmail.com)
@@ -16,8 +15,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-#Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-#++
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #
 
 require 'sketches/config'
@@ -34,7 +32,13 @@ module Sketches
     EXT = '.rb'
 
     #
-    # Create a new TempSketch object.
+    # Create a new {TempSketch} object.
+    #
+    # @yield [tempsketch]
+    #   The given block will be passed the new temp sketch.
+    #
+    # @yieldparam [TempSketch] tempsketch
+    #   The new tempsketch.
     #
     def self.open(&block)
       super(BASENAME, Config.tmpdir, &block)
@@ -42,6 +46,17 @@ module Sketches
 
     private
 
+    #
+    # Generates a unique tempfile name for the temp sketch.
+    #
+    # @param [String] basename
+    #   The basename of the temp sketch file.
+    #
+    # @param [Integer] n
+    #
+    # @return [String]
+    #   A unique file name for the temp sketch.
+    #
     def make_tmpname(basename,n)
       prefix, suffix = basename, EXT
 

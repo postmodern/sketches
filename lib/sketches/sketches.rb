@@ -1,5 +1,4 @@
 #
-#--
 # Sketches - A Ruby library for live programming and code reloading.
 #
 # Copyright (c) 2009 Hal Brodigan (postmodern.mod3 at gmail.com)
@@ -16,8 +15,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-#Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-#++
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #
 
 require 'sketches/config'
@@ -25,20 +23,35 @@ require 'sketches/cache'
 
 module Sketches
   #
-  # Configure Sketches with the given _options_.
+  # Configure Sketches.
   #
-  # _options_ may contain the following keys:
-  # <tt>:tmpdir</tt>:: Directory to store temporary sketches in.
-  #                    Defaults to Dir.tmpdir if unspecified.
-  # <tt>:background</tt>:: Specifies wether to run the editor as a
-  #                        background or a foreground process.
-  # <tt>:terminal</tt>:: The terminal to optionally run the editor within.
-  # <tt>:editor</tt>:: The editor to use to edit sketches.
-  # <tt>:pause</tt>:: The number of seconds to pause in-between
-  #                   checking if any sketches were modified.
+  # @param [Hash] options
+  #   Configuration options.
   #
+  # @option options [String] :tmpdir (Dir.tmpdir)
+  #   Alternate temp directory to store sketches in.
+  #
+  # @option options [Boolean] :background
+  #   Specifies whether to run the editor as a background or foreground
+  #   process.
+  #
+  # @option options [Proc] :terminal
+  #   A lambda that generates the terminal command to run a given
+  #   editor command within.
+  #
+  # @option options [String] :editor
+  #   The command to spawn a new editor.
+  #
+  # @option options [Integer] :pause
+  #   The number of seconds to pause in-between checking if any of the
+  #   sketches were modified.
+  #
+  # @return [nil]
+  #
+  # @example
   #   Sketches.config :editor => 'gvim', :pause => 2
   #
+  # @example Configure Sketches with a custom terminal command.
   #   Sketches.config :editor => 'vim',
   #                   :background => true,
   #                   :terminal => lambda { |cmd|
@@ -74,6 +87,9 @@ module Sketches
   #
   # The cache of sketches.
   #
+  # @return [Cache]
+  #   The cache of sketches.
+  #
   def Sketches.cache
     unless @@sketches_cache
       @@sketches_cache = Cache.new
@@ -83,11 +99,17 @@ module Sketches
   end
 
   #
-  # Edits the sketch with the specified _id_or_name_. If no sketch exists
-  # with the specified _id_or_name_, one will be created.
+  # Creates or edits a sketch.
   #
+  # @param [Integer, Symbol, nil] id_or_name
+  #   The optional sketch ID or name to edit.
+  #
+  # @return [nil]
+  #
+  # @example Create/Edit sketch #2
   #   Sketches.sketch 2
   #
+  # @example Create/Edit the 'foo' sketch
   #   Sketches.sketch :foo
   #
   def Sketches.sketch(id_or_name)
@@ -100,8 +122,14 @@ module Sketches
   end
 
   #
-  # Creates a new sketch using the specified _path_.
+  # Loads a new sketch from a given path.
   #
+  # @param [String] path
+  #   The path of an old sketch.
+  #
+  # @return [nil]
+  #
+  # @example
   #   Sketches.from 'path/to/foo.rb'
   #
   def Sketches.from(path)
@@ -113,8 +141,17 @@ module Sketches
   end
 
   #
-  # Names the sketch with the specified _id_ with the specified _name_.
+  # Names a sketch.
   #
+  # @param [Integer] id
+  #   The sketch ID to name.
+  #
+  # @param [Symbol] name
+  #   The name to assign to the sketch.
+  #
+  # @return [nil]
+  #
+  # @example
   #   Sketches.name 2, :foo
   #
   def Sketches.name(id,name)
@@ -124,11 +161,18 @@ module Sketches
   end
 
   #
-  # Saves the sketch with the specified _id_or_name_ to the specified
-  # _path_.
+  # Saves a sketch.
   #
+  # @param [Integer, Symbol] id_or_name
+  #   The sketch ID or name to save.
+  #
+  # @param [String] path
+  #   The path to save the sketch to.
+  #
+  # @example
   #   Sketches.save 2, 'path/to/example.rb'
   #
+  # @example
   #   Sketches.save :foo, 'path/to/foo.rb'
   #
   def Sketches.save(id_or_name,path)
@@ -141,6 +185,8 @@ module Sketches
 
   #
   # Print out all of the sketches.
+  #
+  # @return [nil]
   #
   def Sketches.print
     Sketches.cache.synchronize { puts Sketches.cache }

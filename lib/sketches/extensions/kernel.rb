@@ -1,5 +1,4 @@
 #
-#--
 # Sketches - A Ruby library for live programming.
 #
 # Copyright (c) 2009 Hal Brodigan (postmodern.mod3 at gmail.com)
@@ -16,19 +15,21 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-#Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-#++
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #
 
 require 'sketches/sketches'
 
 module Kernel
   #
-  # Edits the sketch with the specified _id_or_name_. If no sketch exists
-  # with the specified _id_or_name_, one will be created.
+  # Edits the sketch.
   #
+  # @see Sketches.sketch
+  #
+  # @example
   #   sketch 2
   #
+  # @example
   #   sketch :foo
   #
   def sketch(id_or_name=nil)
@@ -36,8 +37,11 @@ module Kernel
   end
 
   #
-  # Creates a new sketch using the specified _path_.
+  # Creates a new sketch.
   #
+  # @see Sketches.from
+  #
+  # @example
   #   sketch_from 'path/to/foo.rb'
   #
   def sketch_from(path)
@@ -45,8 +49,11 @@ module Kernel
   end
 
   #
-  # Names the sketch with the specified _id_ with the specified _name_.
+  # Names a sketch.
   #
+  # @see Sketches.name
+  #
+  # @example
   #   name_sketch 2, :foo
   #
   def name_sketch(id,name)
@@ -54,11 +61,14 @@ module Kernel
   end
 
   #
-  # Saves the sketch with the specified _id_or_name_ to the specified
-  # _path_.
+  # Saves a sketch.
   #
+  # @see Sketches.save
+  #
+  # @example
   #   save_sketch 2, 'path/to/example.rb'
   #
+  # @example
   #   save_sketch :foo, 'path/to/foo.rb'
   #
   def save_sketch(id_or_name,path)
@@ -67,6 +77,8 @@ module Kernel
 
   #
   # Print out all of the sketches.
+  #
+  # @see Sketches.print
   #
   def sketches
     Sketches.print
