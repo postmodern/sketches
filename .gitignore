@@ -3,5 +3,7 @@ pkg
 tmp/*
 web/*
 .DS_Store
+.bundle
+.yardoc
 *.swp
 *~
