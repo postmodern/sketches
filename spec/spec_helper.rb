@@ -9,4 +9,4 @@ rescue Bundler::BundlerError => e
   exit e.status_code
 end
 
-require 'spec'
+require 'rspec'
