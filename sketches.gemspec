@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Postmodern"]
-  s.date = %q{2010-08-22}
+  s.date = %q{2010-10-10}
   s.description = %q{Sketches allows you to create and edit Ruby code from the comfort of your editor, while having it safely reloaded in IRB whenever changes to the code are saved.}
   s.email = %q{postmodern.mod3@gmail.com}
   s.extra_rdoc_files = [
@@ -44,6 +44,7 @@ Gem::Specification.new do |s|
     "lib/sketches/sketch.rb",
     "lib/sketches/sketches.rb",
     "lib/sketches/temp_sketch.rb",
+    "sketches.gemspec",
     "spec/sketches_spec.rb",
     "spec/spec_helper.rb"
   ]
@@ -65,18 +66,18 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_development_dependency(%q<rake>, ["~> 0.8.7"])
-      s.add_development_dependency(%q<jeweler>, ["~> 1.5.0"])
+      s.add_development_dependency(%q<jeweler>, ["~> 1.5.0.pre"])
       s.add_development_dependency(%q<rspec>, ["~> 1.3.0"])
     else
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<rake>, ["~> 0.8.7"])
-      s.add_dependency(%q<jeweler>, ["~> 1.5.0"])
+      s.add_dependency(%q<jeweler>, ["~> 1.5.0.pre"])
       s.add_dependency(%q<rspec>, ["~> 1.3.0"])
     end
   else
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
     s.add_dependency(%q<rake>, ["~> 0.8.7"])
-    s.add_dependency(%q<jeweler>, ["~> 1.5.0"])
+    s.add_dependency(%q<jeweler>, ["~> 1.5.0.pre"])
     s.add_dependency(%q<rspec>, ["~> 1.3.0"])
   end
 end
