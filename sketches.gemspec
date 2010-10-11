@@ -24,7 +24,6 @@ Gem::Specification.new do |s|
     ".idea/sketches.iml",
     ".idea/vcs.xml",
     ".rspec",
-    ".specopts",
     ".yardopts",
     "COPYING.txt",
     "ChangeLog.md",
