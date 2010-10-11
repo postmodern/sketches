@@ -30,7 +30,6 @@ Gem::Specification.new do |s|
     "ChangeLog.md",
     "Gemfile",
     "Gemfile.lock",
-    "Manifest.txt",
     "README.md",
     "Rakefile",
     "VERSION",
