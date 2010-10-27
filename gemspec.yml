@@ -5,7 +5,7 @@ description:
   editor, while having it safely reloaded in IRB whenever changes to the
   code are saved.
 
-license: MIT
+license: GPL-2
 authors: Postmodern
 email: postmodern.mod3@gmail.com
 homepage: http://github.com/postmodern/sketches
