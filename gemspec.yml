@@ -1,0 +1,18 @@
+name: sketches
+summary: Edit, run and reload Ruby code from IRB in your favorite editor
+description:
+  Sketches allows you to create and edit Ruby code from the comfort of your
+  editor, while having it safely reloaded in IRB whenever changes to the
+  code are saved.
+
+license: MIT
+authors: Postmodern
+email: postmodern.mod3@gmail.com
+homepage: http://github.com/postmodern/sketches
+has_yard: true
+
+development_dependencies:
+  ore: ~> 0.2.0
+  ore-tasks: ~> 0.1.2
+  rspec: ~> 2.0.0
+  yard: ~> 0.6.0
