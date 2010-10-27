@@ -1,4 +1,5 @@
 name: sketches
+version: 0.1.1
 summary: Edit, run and reload Ruby code from IRB in your favorite editor
 description:
   Sketches allows you to create and edit Ruby code from the comfort of your
