@@ -77,7 +77,7 @@ module Sketches
     end
 
     #
-    # Returns +true+ if the sketch is eval'd immediatly
+    # Returns +true+ if the sketch is eval'd immediately
     # on editor quit (only if background = false)
     #
     #   Config.eval_after_editor_quit

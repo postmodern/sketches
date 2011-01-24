@@ -136,7 +136,7 @@ module Sketches
     # Reloads the sketch.
     #
     # @return [Boolean]
-    #   Specifies whether the reload was successfull.
+    #   Specifies whether the reload was successful.
     #
     def reload!
       if File.file?(@path)
